@@ -450,7 +450,7 @@ export default function App() {
               <div className="policy">
                 <h3 className="h3">Deposit Policy</h3>
                 <p className="p">
-                  All appointments require a non-refundable deposit of <b>$200</b>. This deposit will be applied to the
+                  All appointments require a non-refundable deposit of <b>$150</b>. This deposit will be applied to the
                   total cost of your tattoo at your final appointment.
                 </p>
                 <p className="p">
