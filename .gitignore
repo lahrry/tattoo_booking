@@ -15,3 +15,4 @@ pnpm-debug.log*
 # Editor
 .vscode
 .idea
+public/works_backup/
