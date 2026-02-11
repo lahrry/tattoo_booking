@@ -1,0 +1,454 @@
+/* ================================
+   BASE
+================================ */
+
+:root {
+  --bg: #ffffff;
+  --text: #111;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+
+  --radius: 18px;
+
+  --fs-h1: clamp(28px, 2.6vw, 36px);
+  --fs-body: clamp(16px, 1.2vw, 18px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+
+  font-family:
+    "Gill Sans",
+    "Gill Sans MT",
+    Calibri,
+    "Trebuchet MS",
+    system-ui,
+    Arial;
+
+  font-size: var(--fs-body);
+
+  /* ✅ 핵심: header 겹침 완전 방지 */
+  padding-top: 110px;
+}
+
+@media (max-width: 640px) {
+  html, body {
+    padding-top: 150px;
+  }
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ================================
+   HEADER — FIXED
+================================ */
+
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 100;
+
+  background: rgba(255,255,255,0.96);
+  border-bottom: 1px solid var(--line);
+
+  padding: 16px 18px;
+
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+/* ✅ 프로필 사진 (works/0.jpg) */
+.brandAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  object-fit: cover;
+  flex: 0 0 auto;
+}
+
+.brandTitle {
+  font-weight: 700;
+}
+
+.brandSub {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+
+/* ================================
+   NAV
+================================ */
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+}
+
+.tab {
+  border: 1px solid var(--line);
+  background: #fff;
+  padding: 10px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.tab.active {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+.tab:hover {
+  background: #f5f5f5;
+}
+
+@media (max-width: 640px) {
+  .tabs {
+    justify-content: flex-start;
+    width: 100%;
+  }
+}
+
+
+/* ================================
+   LAYOUT
+================================ */
+
+.container {
+  width: min(940px, calc(100% - 28px));
+  margin: 0 auto 40px;
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(20px, 2.4vw, 28px);
+  background: #fff;
+}
+
+
+/* ================================
+   TEXT
+================================ */
+
+.h1 {
+  font-size: var(--fs-h1);
+  margin: 0 0 12px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+
+/* ================================
+   HOME GALLERY (3 per row)
+================================ */
+
+.gallery {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.galleryItem {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.galleryItem img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ================================
+   FORM
+================================ */
+
+.form {
+  display: grid;
+  gap: 16px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+@media (max-width: 720px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field label {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.req {
+  color: #dc2626;
+  margin-left: 6px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  font-size: 16px;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #111;
+  box-shadow: 0 0 0 4px rgba(0,0,0,0.06);
+}
+
+textarea {
+  resize: vertical;
+}
+
+.hint {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.error {
+  color: #dc2626;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+
+/* ================================
+   UPLOAD PREVIEW
+================================ */
+
+.previews {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 10px;
+}
+
+@media (max-width: 900px) {
+  .previews { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 520px) {
+  .previews { grid-template-columns: 1fr; }
+}
+
+.preview {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.preview img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+}
+
+.previewMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.previewName {
+  font-size: 12px;
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.link {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+
+/* ================================
+   CHECKBOX  ✅ FIX HERE
+   - checkbox가 텍스트 "바로 옆"에 고정되게
+================================ */
+
+.checkboxRow {
+  padding-top: 4px;
+}
+
+/* label.checkbox는 텍스트가 길어도 체크박스가 왼쪽에 고정되도록 */
+.checkbox {
+  display: inline-flex;     /* ✅ 줄 안에서 자연스럽게 */
+  align-items: flex-start;  /* ✅ 텍스트가 2줄이 돼도 체크박스는 첫줄 기준 */
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* 체크박스를 고정 크기로 */
+.checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;           /* ✅ 줄바꿈해도 크기 유지 */
+  margin-top: 2px;          /* ✅ 글자 baseline에 예쁘게 맞춤 */
+}
+
+/* 라벨 텍스트는 줄바꿈 허용 */
+.checkbox span,
+.checkboxText {
+  line-height: 1.4;
+}
+
+
+/* ================================
+   POLICY
+================================ */
+
+.policy {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+  background: #fafafa;
+}
+
+
+/* ================================
+   BUTTONS
+================================ */
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+button.primary {
+  background: #111;
+  color: #fff;
+  border: 1px solid #111;
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+/* ================================
+   STATUS
+================================ */
+
+.success {
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid #bbf7d0;
+  background: #f0fdf4;
+}
+
+.errorBox {
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+}
+
+
+/* ================================
+   FOOTER
+================================ */
+
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+}
