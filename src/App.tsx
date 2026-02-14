@@ -235,10 +235,11 @@ export default function App() {
             <section className="card">
               <h1 className="h1">Welcome</h1>
               <p className="lead">
-              I’m a tattoo artist with over 10 years of professional experience from Korea. I specialize in highly detailed and delicate work, but I’m also comfortable working across all styles and genres. Every tattoo is created through in-depth consultation so you receive a design that truly fits you. Because a tattoo stays with you for life, it’s important to work with an experienced artist you can trust. You’re in good hands with me.
-               <br />
-                Please use the booking form to send your request. Include your <b>design idea</b>, <b>size</b>, and{" "}
-                <b>placement</b>. Reference images are optional but helpful.
+              I’m a tattoo artist with over <strong>10 years of professional experience</strong> from Korea. 
+              I specialize in highly detailed and delicate work, but I’m also comfortable working across all styles and genres. 
+              Every tattoo is created through in-depth consultation so you receive a design that truly fits you. Because a tattoo stays with you for life, it’s important to work with an <strong>experienced artist</strong>> you can trust. 
+              You’re in good hands with me.
+               
               </p>
 
               <div className="grid2">
